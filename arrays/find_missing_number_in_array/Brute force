@@ -1,0 +1,15 @@
+int missingNumber(vector<int>&a, int N) {
+    for(int i=1;i<=N;i++) //numbers traversing
+    {
+        int flag=1;
+        for(int j=0;j<N-1;j++) //index traversing
+        {
+          if (a[j] == i)
+            {
+                flag = 0;
+            }
+        }
+        if(flag==1)
+        return i;
+    }
+}
