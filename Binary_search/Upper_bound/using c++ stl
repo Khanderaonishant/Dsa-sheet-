@@ -1,0 +1,4 @@
+int upperBound(vector<int> &arr, int x, int n){
+  
+  int up=upper_bound(arr.begin(),arr.end(),x)-arr.begin();
+}
