@@ -1,0 +1,38 @@
+bool isValidParenthesis(string s) {
+    int n=s.length();
+    stack<int>s1;
+    for(int i=0;i<n;i++)
+    {
+        if(s[i]=='(' || s[i]=='{' || s[i]=='[')
+        {
+            s1.push(s[i]);
+        }
+        else
+        {
+            if(s1.empty())
+            {
+                return false;
+            }
+            else
+            {
+                char c=s1.top();
+                //s1.pop();
+                  if (s[i] == ')' && c == '(' || s[i] == '}' && c == '{' || s[i] == ']' && c == '[')
+                   {
+                       s1.pop();
+                   }
+                   else{
+                       return false;
+                   } 
+            }
+        }
+    }
+    if(s1.empty())
+    {
+         return true;
+    }
+    else
+    {
+         return false;
+    } 
+}
