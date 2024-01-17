@@ -1,0 +1,19 @@
+void recursion(int n, vector<int>&ans,int x)
+{
+    ans.push_back(n);
+
+    if(n==2)
+    {
+        return;
+    }
+    recursion(n-1,ans,1); 
+}
+
+
+vector<int> printNos(int x) {
+    vector<int>ans;
+
+    recursion(x,ans,1);
+
+    return ans;
+}
