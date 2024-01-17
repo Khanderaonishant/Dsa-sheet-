@@ -1,0 +1,31 @@
+/*
+    Time Complexity: O( n ) 
+    Space Complexity: O( 1 )
+    
+    where n is the integer.
+*/
+
+/*
+    Time Complexity: O( n ) 
+    Space Complexity: O( 1 )
+    
+    where n is the integer.
+*/
+
+void recursion(int y,vector<int> &ans,int n)
+{
+    ans.push_back(y);
+  if (y == n) {
+    return;
+  }
+
+  recursion(y+1,ans,n);
+}
+
+
+
+vector<int> printNos(int x) {
+    vector<int>ans;
+    recursion(1,ans,x);
+    return ans;   
+}
