@@ -1,12 +1,13 @@
 int removeDuplicates(vector<int> &arr, int n) {
-	int i=0;
-	for(int i=0;i<n;i++)
+	int i=1;
+	for(int j=1;j<n;j++)
 	{
-		for(int j=1;j<n;j++)
+		if (arr[j - 1] != arr[j])
 		{
-			if(arr[j-1]!=arr[j])
-			arr[i++]=arr[j];
+			arr[i] = arr[j];
+			i++;
 		}
-		return i+1;
 	}
+	return i;
+	
 }
