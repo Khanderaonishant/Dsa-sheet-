@@ -1,0 +1,10 @@
+vector<int> reverseArray(int n, vector<int> &nums)
+{
+   int st=0,e=nums.size()-1;
+   while(st<e)
+   {
+       swap(nums[st++],nums[e--]);
+   }
+    return nums;
+
+}
