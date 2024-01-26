@@ -1,0 +1,88 @@
+/*
+    Time Complexity : O(n)
+    Space Complexity : O(n)
+    
+    where n is the length of the expression. 
+*/  
+
+#include <stack>
+#include <unordered_map>
+
+bool isOperator(char ch){
+    if(ch - 'a' >= 0 && ch - 'a' <= 25){
+        return true;
+    }
+    else if(ch - '0' >= 0 && ch - '0' <= 9){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+string infixToPostfix(string exp)
+{
+    string ans = "";
+    stack<char> s;
+
+    // Precedence of the operators 
+    unordered_map<char, int> precedence;
+
+    precedence['^'] = 3;
+    precedence['*'] = 2;
+    precedence['/'] = 2;
+    precedence['+'] = 1;
+    precedence['-'] = 1;
+    precedence['('] = 0;
+    precedence[')'] = 0;
+
+    for(int i = 0; i < exp.length(); i++)
+    {
+
+
+    //********condition 1:if it is operand then directly push into ans.*********//
+        if(isOperator(exp[i]))  
+        {
+            ans += exp[i];   
+        }
+
+
+    //********condition 2: if it is closing brcket.*********//
+        else if(exp[i] == ')')   // if it is closing brcket.
+        {
+
+            // Remove till the last opening
+            while(s.top() != '(')
+            {
+                ans += s.top();
+                s.pop();
+            }
+            s.pop();
+        }
+
+
+    //********condition 3: if it is opening  brcket.*********//
+        else if(exp[i] == '(')
+        {
+            s.push(exp[i]);//pushed into stack
+        }
+
+    //********condition 4: if precedence of top is higher than char.*********//
+        else{
+
+            // Remove lower precedence operators 
+            while(s.size() && precedence[s.top()] >= precedence[exp[i]]){
+                ans += s.top();
+                s.pop();
+            }
+            s.push(exp[i]);
+        }
+    }
+    while(s.size())
+    {
+        ans += s.top();
+        s.pop();
+    }
+    return ans;
+    
+}
