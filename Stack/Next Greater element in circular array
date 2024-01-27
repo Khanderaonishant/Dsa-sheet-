@@ -1,0 +1,21 @@
+#include <stack>
+#include <vector>
+
+vector<int> nextGreaterElementII(vector<int>& a) {
+    stack<int> st;
+    int n = a.size();
+    vector<int> nge(n, -1); // Initialize nge with -1
+
+    for (int i = 0; i < 2 * n - 1; i++) {
+        while (!st.empty() && a[st.top()] < a[i % n]) {
+            nge[st.top()] = a[i % n];
+            st.pop();
+        }
+
+        if (i < n) {
+            st.push(i % n);
+        }
+    }
+
+    return nge;
+}
