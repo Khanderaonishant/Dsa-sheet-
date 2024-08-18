@@ -1,18 +1,21 @@
-class Solution {
-public:
-    void rotate(vector<int>& nums, int k) {
-        int n=nums.size();
-        k=k%n;
-        vector<int>rotated(n);
-        for(int i=0;i<k;i++)
-        {
-            rotated[i]=nums[n-k+i];
-        }
-        for(int i=0;i<n-k;i++)
-        {
-            rotated[k+i]=nums[i];
-        }
-        nums=rotated;
+class Solution{
+ public:
+    
+    //Function to rotate an array by d elements in counter-clockwise direction. 
+    void rotateArr(int arr[], int d, int n){
+        d = d % n;
+        vector<int>temp(n);
         
+        // Copy elements from arr to temp
+        for(int i=0;i<n;i++)
+        {
+            temp[i] = arr[i];
+        }
+        
+        // Rotate elements from temp to arr
+        for(int i=0;i<n;i++)
+        {
+            arr[i] = temp[(i+d)%n];
+        }
     }
 };
