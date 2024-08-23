@@ -1,0 +1,13 @@
+class Solution{
+public:		
+
+	int search(string X, string Y)
+	{
+	    int pos=X.rfind(Y);
+	    if(pos!=string:: npos)
+	    {
+	        return pos+1;
+	    }
+	    return -1;
+	}
+};
