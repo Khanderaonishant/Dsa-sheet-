@@ -2,19 +2,21 @@
 #include <cstring>  // For strlen
 
 int OperationsBinaryString(char* str) {
-    // Initial result is the first binary digit (0 or 1)
-    int result = str[0] - '0';  // Convert char to int ('0' -> 0, '1' -> 1)
+  
+    int result = str[0] - '0';  
     
-    // Traverse the string, skipping every second character (the digits)
+   
     for (int i = 1; str[i] != '\0'; i += 2) {
-        char operation = str[i];  // Get the operator ('A', 'B', 'C')
-        int nextDigit = str[i + 1] - '0';  // Get the next binary digit ('0' -> 0, '1' -> 1)
+        char operation = str[i];  
+        int nextDigit = str[i + 1] - '0';  
         
-        // Perform the respective operation
+        
         if (operation == 'A') {
             result = result & nextDigit;  // AND operation
+
         } else if (operation == 'B') {
             result = result | nextDigit;  // OR operation
+
         } else if (operation == 'C') {
             result = result ^ nextDigit;  // XOR operation
         }
