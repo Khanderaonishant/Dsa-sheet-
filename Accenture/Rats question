@@ -1,18 +1,19 @@
-
-int findHouse(int arr[], int n, int r, int unit) {
-    if (arr == nullptr || n == 0) {
-        return -1;
+int calculate (int r, int unit, int arr[], int n)
+{
+  if (n == 0)
+    return -1;
+  int totalFoodRequired = r * unit;
+  int foodTillNow = 0;
+  int house = 0;
+  for (house = 0; house < n; ++house)
+    {
+      foodTillNow += arr[house];
+      if (foodTillNow >= totalFoodRequired)
+	    {
+	      break;
+	    }
     }
-
-    int totalFoodRequired = r * unit;
-    int foodTillNow = 0;
-
-    for (int house = 0; house < n; house++) {
-        foodTillNow += arr[house];
-        if (foodTillNow >= totalFoodRequired) {
-            return house + 1;
-        }
-    }
-
+    if (totalFoodRequired > foodTillNow)
     return 0;
+    return house + 1;
 }
