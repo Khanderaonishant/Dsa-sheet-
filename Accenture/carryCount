@@ -1,28 +1,52 @@
-int NumberOfCarries(int num1, int num2) {
-    int carry = 0;       // Carry for next addition
-    int carryCount = 0;  // Number of carries
-    int digit1, digit2, sum;
-
-    while (num1 > 0 || num2 > 0) {
-        // Extract the rightmost digit from both numbers
-        digit1 = num1 % 10;
-        digit2 = num2 % 10;
-
-        // Calculate the sum of digits plus carry
-        sum = digit1 + digit2 + carry;
-
-        // Check if we have a carry
-        if (sum >= 10) {
-            carry = 1;       // Set carry for the next digit addition
-            carryCount++;    // Increment carry count
-        } else {
-            carry = 0;       // No carry
-        }
-
-        // Remove the rightmost digit from both numbers
-        num1 /= 10;
-        num2 /= 10;
+int numberOfCarries (int num1, int num2)
+{
+  int carry = 0, sum, p, q, count = 0;
+  while ((num1 != 0) && (num2 != 0))
+    {
+      p = num1 % 10;
+      q = num2 % 10;
+      sum = carry + p + q;
+      if (sum > 9)
+	{
+	  carry = 1;
+	  count++;
+	}
+      else
+	{
+	  carry = 0;
+	}
+      num1 = num1 / 10;
+      num2 = num2 / 10;
     }
-
-    return carryCount;
+  while (num1 != 0)
+    {
+      p = num1 % 10;
+      sum = carry + p;
+      if (sum > 9)
+	{
+	  carry = 1;
+	  count++;
+	}
+      else
+	{
+	  carry = 0;
+	}
+      num1 = num1 / 10;
+    }
+  while (num2 != 0)
+    {
+      q = num2 % 10;
+      sum = carry + q;
+      if (sum > 9)
+	{
+	  carry = 1;
+	  count++;
+	}
+      else
+	{
+	  carry = 0;
+	}
+      num2 = num2 / 10;
+    }
+  return count;
 }
